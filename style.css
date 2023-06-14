@@ -1,0 +1,81 @@
+body{
+    display: flex;
+    justify-content: center;    
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+#persona-container{
+    text-align: center;
+}
+
+#persona-name{
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-family : Arial, sans-serif;
+}
+
+.element-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 400px;
+  margin-bottom: 20px;
+  flex-wrap: nowrap;/*Stops the boxes from going onto the next line*/
+  margin-left: auto;/*margin-left and margin-right stop the boxes from drifting left or right*/
+  margin-right: auto;
+}
+
+.element{
+  flex: 0 0 auto;
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+
+.guess-container{
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.guess-box{
+  display: flex;
+}
+
+.guess-input{
+  width: 50px;
+  height: 50px;
+  margin-right: 5px;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.correct-guess{
+    background-color: green;
+    color: white;
+}
+
+.incorrect-guess{
+    animation: flash-red 0.5s;
+}
+
+@keyframes flash-red{
+    0%, 50%{
+        background-color: red;
+        color: white;
+    }
+    100%{
+        background-color: inherit;
+        color: inherit;
+    }
+}
