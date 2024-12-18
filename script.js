@@ -3,6 +3,7 @@ function getUserPersona(callback){
   callback(userPersona)
 }
 
+types = ['Physical', 'Gun', 'Fire', 'Ice', 'Electric', 'Wind', 'Psychic', 'Nuclear', 'Bless', 'Curse']
 function selectRandomPersona(data) {
   const personaNames = Object.keys(data);
   const randomIndex = Math.floor(Math.random() * personaNames.length);
@@ -18,13 +19,15 @@ function selectRandomPersona(data) {
 function displayElements(persona){
   const elementBox = document.querySelector('.element-box ');
   const elems = persona.data.elems;
-
+  
   elems.forEach((elem) => {
-    const element = document.createElement('div');
+    const element = document.createElement('div');/*There are 10 elements*/
     element.classList.add('element');
     element.textContent = elem;
     elementBox.appendChild(element);
+    
   })
+  
 }
 
 function displayGuessBoxes(selectedPersona){
@@ -99,10 +102,11 @@ function giveUp(){
   const guessInputs = document.querySelectorAll('.guess-input');
   setupGuessInputEventListeners(guessInputs);
   const topElementBox = document.querySelector('.element-box .element:first-child');
-  topElementBox.style.visibility = 'visible';
-}
 
 
+  }
+
+document.getElementById('give-up-button'.addEventListener('click', giveUp))
 const selectedPersona = selectRandomPersona(personaMapRoyal);
 
 const personaNameElement = document.getElementById('persona-name');
