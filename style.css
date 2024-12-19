@@ -1,14 +1,14 @@
-
-.correct-guess{
-    background-color: green;
-    color: white;
-}
-
-.incorrect-guess{
-    animation: flash-red 0.5s;
-}
-
 Centre-box{
     margin: auto;
     font-size: 200;
 }
+
+.display-box{
+    display: inline-flex;
+}
+.display-text{
+    font-size: 20px;
+    height: auto;
+    justify-content: centre;
+}
+
