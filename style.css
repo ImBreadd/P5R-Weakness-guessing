@@ -12,3 +12,13 @@ Centre-box{
     justify-content: centre;
 }
 
+.display-box{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+label, input{
+    display: inline-block;
+    margin: 0;
+}
