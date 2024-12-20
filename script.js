@@ -7,17 +7,11 @@ types = ['Physical', 'Gun', 'Fire', 'Ice', 'Electric', 'Wind', 'Psychic', 'Nucle
 function selectRandomPersona(data) {
   const personaNames = Object.keys(data);
   const randomIndex = Math.floor(Math.random() * personaNames.length);
-  const randomPersonaName = personaNames[randomIndex];
-  const randomPersonaData = data[randomPersonaName];
+  return personaNames[randomIndex];
 
-  return {
-    name: randomPersonaName,
-    data: randomPersonaData
-  };
 }
 
-function checkGuess(data){
-    if(!selectedPersona){
-        console.log("No persona selected for comparison")
-    }
-}
+document.addEventListener("DOMContentLoaded", () => {
+    const randomPersonName = selectRandomPersona(PersonaDataRoyal);
+    document.getElementById("display-box").innerText = `Random Persona: ${randomPersonaName}`;
+})
