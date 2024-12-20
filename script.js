@@ -16,3 +16,8 @@ function selectRandomPersona(data) {
   };
 }
 
+function checkGuess(data){
+    if(!selectedPersona){
+        console.log("No persona selected for comparison")
+    }
+}
