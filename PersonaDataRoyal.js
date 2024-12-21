@@ -1,4 +1,4 @@
-const personaMapRoyal = {
+export const personaMapRoyal = {
     "Abaddon": {
         "inherits": "Curse",
         "item": "Megaton Raid Belt",
@@ -4518,5 +4518,3 @@ const personaMapRoyal = {
         "dlc": true
     }
 };
-
-module.exports = personaMapRoyal;
