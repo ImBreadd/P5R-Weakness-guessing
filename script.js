@@ -1,11 +1,7 @@
 import { personaMapRoyal } from './PersonaDataRoyal.js';
 
-function getUserPersona(callback){
-  var userPersona = prompt('Enter your guess: ');
-  callback(userPersona)
-}
-
 const types = ['Physical', 'Gun', 'Fire', 'Ice', 'Electric', 'Wind', 'Psychic', 'Nuclear', 'Bless', 'Curse']
+let selectedPersona = "";
 function selectRandomPersona(data) {
   const personaNames = Object.keys(data);
   const randomIndex = Math.floor(Math.random() * personaNames.length);
@@ -15,6 +11,7 @@ function selectRandomPersona(data) {
 
 function displayPersonaName(){
     const randomPersona = selectRandomPersona(personaMapRoyal);
+    selectedPersona = randomPersona;
     const personaNameElement = document.getElementById('personaName')
 
     if (personaNameElement){
@@ -24,4 +21,41 @@ function displayPersonaName(){
     }
 }
 
-displayPersonaName();
+function compareGuess(){
+    event.preventDefault();
+
+    const userGuessInput = document.getElementById('userGuess')
+    let resultElement = document.getElementById('result');
+
+    if (!resultElement){
+        resultElement = document.createElement('div');
+        resultElement.id = 'result';
+        document.body.appendChild(resultElement);
+    }
+
+    if (userGuessInput){
+
+        const userGuessValue = userGuessInput.value.trim().toLowerCase();
+        const correctAnswer = selectedPersona.toLowerCase();
+
+        if (userGuessValue == correctAnswer){
+
+            resultElement.textContent = "Correct!";
+            resultElement.style.color = "green";
+
+        }else{
+            resultElement.textContent = "Wrong!"
+            resultElement.style.color = "red"
+        }
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    displayPersonaName();
+
+    const form = document.querySelector('form');
+    if (form){
+        form.addEventListener('submit', compareGuess);
+    }
+});
+
