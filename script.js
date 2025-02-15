@@ -2,6 +2,14 @@ import { personaMapRoyal } from './PersonaDataRoyal.js';
 
 const types = ['Physical', 'Gun', 'Fire', 'Ice', 'Electric', 'Wind', 'Psychic', 'Nuclear', 'Bless', 'Curse']
 let selectedPersona = "";
+let selectedPersonaElems = "";
+
+//Putting affinities into guessing categories
+const weakClass = ['wk']
+const neutralClass = ['-']
+const strongClass = ['rs']
+const mightyClass = ['rp', 'ab', 'nu']
+
 function selectRandomPersona(data) {
   const personaNames = Object.keys(data);
   const randomIndex = Math.floor(Math.random() * personaNames.length);
@@ -12,6 +20,7 @@ function selectRandomPersona(data) {
 function displayPersonaName(){
     const randomPersona = selectRandomPersona(personaMapRoyal);
     selectedPersona = randomPersona;
+    selectedPersonaElems = personaMapRoyal[selectedPersona].elems;
     const personaNameElement = document.getElementById('personaName')
 
     if (personaNameElement){
@@ -20,6 +29,11 @@ function displayPersonaName(){
         console.error('Element with id "personaName" not found.');
     }
 }
+
+function compareAffinities(){
+
+}
+
 
 function compareGuess(){
     event.preventDefault();
