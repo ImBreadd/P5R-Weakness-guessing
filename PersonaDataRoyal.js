@@ -1,4 +1,4 @@
-export const personaMapRoyal = {
+const personaMapRoyal = {
     "Abaddon": {
         "inherits": "Curse",
         "item": "Megaton Raid Belt",

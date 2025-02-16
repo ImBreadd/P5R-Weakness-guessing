@@ -3,12 +3,14 @@
 <head>
     <link rel="stylesheet" href="style.css">
     <title>PERSONADLE</title>
+    <script type="text/javascript" src="PersonaDataRoyal.js"></script>
+    <script type="text/javascript" src="script.js"></script>
 </head>
 
 <body>
     <div class="title-section">
-        <h1>PERSONADLE</h1>
-        <h2>Persona guessing game</h2>
+        <h1>PERSONA</h1>
+
     </div>
     <div id="personaName"></div>
     <div class="elements-section">
@@ -25,12 +27,12 @@
         <div>Curse</div>
     </fieldset>
     </div>
-    <form>
+    <form autocomplete = "off">
         <label>
             Guess
-            <input type = "text" id="userGuess" />
+            <input type = "text" id="userGuess" onKeyUp = "showResults(this.value)"/>
         </label>
+        <div id="suggestion"></div>
     </form>
-    <script  type="module" src="script.js"></script>
 </body>
 </html>
