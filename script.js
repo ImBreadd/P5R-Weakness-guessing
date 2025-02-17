@@ -1,4 +1,4 @@
-import { personaMapRoyal } from './PersonaDataRoyal.js';
+//import { personaMapRoyal } from './PersonaDataRoyal.js';
 
 const types = ['Physical', 'Gun', 'Fire', 'Ice', 'Electric', 'Wind', 'Psychic', 'Nuclear', 'Bless', 'Curse']
 let selectedPersona = "";
@@ -10,32 +10,22 @@ const neutralClass = ['-']
 const strongClass = ['rs']
 const mightyClass = ['rp', 'ab', 'nu']
 
-function selectRandomPersona(data) {
-  const personaNames = Object.keys(data);
-  const randomIndex = Math.floor(Math.random() * personaNames.length);
-  return personaNames[randomIndex];
+const personaNames = Object.keys(personaMapRoyal);
 
+function selectRandomPersona(personaList) {
+  const randomIndex = Math.floor(Math.random() * personaList.length);
+  return personaList[randomIndex];
 }
 
-function displayPersonaName(){
-    const randomPersona = selectRandomPersona(personaMapRoyal);
+function testingLog(){
+    const randomPersona = selectRandomPersona(personaNames);
     selectedPersona = randomPersona;
-    selectedPersonaElems = personaMapRoyal[selectedPersona].elems;
-    const personaNameElement = document.getElementById('personaName')
-
-    if (personaNameElement){
-        personaNameElement.textContent = randomPersona;
-    } else{
-        console.error('Element with id "personaName" not found.');
-    }
+    console.log(selectedPersona);
 }
-
-function compareAffinities(){
-
-}
-
 
 function compareGuess(){
+
+    //Prevents refresh when entering a guess
     event.preventDefault();
 
     const userGuessInput = document.getElementById('userGuess')
@@ -64,8 +54,37 @@ function compareGuess(){
     }
 }
 
+function compareElements(){
+
+}
+function autoComplete(input){
+    if (input == ''){
+        return []
+    }
+    var reg = new RegExp("^" + input, "i");
+    var returnFilter = personaNames.filter(function(term){
+
+        return term.match(reg);
+    });
+    console.log(returnFilter);
+    return returnFilter;
+}
+
+function showResults(val){
+    res = document.getElementById("suggestion");
+    res.innerHTML = '';
+    let list = '';
+    let terms = autoComplete(val);
+    for (i = 0; i < terms.length; i++){
+        list += '<li>' + terms[i] + '</li>';
+    }
+    res.innerHTML = '<ul>' + list + '</ul>';
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
-    displayPersonaName();
+
+    testingLog();
 
     const form = document.querySelector('form');
     if (form){
