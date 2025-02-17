@@ -58,7 +58,7 @@ function autoComplete(input){
     if (input == ''){
         return []
     }
-    var reg = new RegExp(input);
+    var reg = new RegExp("^" + input, "i");
     var returnFilter = personaNames.filter(function(term){
 
         return term.match(reg);
