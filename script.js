@@ -54,6 +54,9 @@ function compareGuess(){
     }
 }
 
+function compareElements(){
+
+}
 function autoComplete(input){
     if (input == ''){
         return []
