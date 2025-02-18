@@ -21,6 +21,7 @@ function testingLog(){
     const randomPersona = selectRandomPersona(personaNames);
     selectedPersona = randomPersona;
     console.log(selectedPersona);
+    console.log(selectedPersonaElems);
 }
 
 function compareGuess(){
@@ -28,7 +29,7 @@ function compareGuess(){
     //Prevents refresh when entering a guess
     event.preventDefault();
 
-    const userGuessInput = document.getElementById('userGuess')
+    const userGuessInput = document.getElementById('userGuessSuggest').value;
     let resultElement = document.getElementById('result');
 
     if (!resultElement){
@@ -39,9 +40,9 @@ function compareGuess(){
 
     if (userGuessInput){
 
-        const userGuessValue = userGuessInput.value.trim().toLowerCase();
-        const correctAnswer = selectedPersona.toLowerCase();
-
+        const userGuessValue = userGuessInput;
+        const correctAnswer = selectedPersona;
+        console.log(userGuessInput);
         if (userGuessValue == correctAnswer){
 
             resultElement.textContent = "Correct!";
@@ -54,9 +55,6 @@ function compareGuess(){
     }
 }
 
-function compareElements(){
-
-}
 function autoComplete(input){
     if (input == ''){
         return []
@@ -71,14 +69,17 @@ function autoComplete(input){
 }
 
 function showResults(val){
-    res = document.getElementById("suggestion");
-    res.innerHTML = '';
-    let list = '';
-    let terms = autoComplete(val);
-    for (i = 0; i < terms.length; i++){
-        list += '<li>' + terms[i] + '</li>';
-    }
-    res.innerHTML = '<ul>' + list + '</ul>';
+        let select = document.getElementById("userGuess");
+        select.innerHTML = '';
+
+        let terms = autoComplete(val);
+
+        for (let i = 0; i < terms.length; i++){
+        let option = document.createElement("option");
+        option.value = terms[i];
+        option.textContent = terms[i];
+        select.appendChild(option);
+        }
 }
 
 
