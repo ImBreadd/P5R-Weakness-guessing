@@ -3,12 +3,15 @@
 const types = ['Physical', 'Gun', 'Fire', 'Ice', 'Electric', 'Wind', 'Psychic', 'Nuclear', 'Bless', 'Curse']
 let selectedPersona = "";
 let selectedPersonaElems = "";
+let previousGuesses = [];
 
 //Putting affinities into guessing categories
-const weakClass = ['wk']
-const neutralClass = ['-']
-const strongClass = ['rs']
-const mightyClass = ['rp', 'ab', 'nu']
+const classes = {
+    weak: ['wk'],
+    neutral: ['-'],
+    strong: ['rs'],
+    mighty: ['rp', 'ab', 'nu']
+}
 
 const personaNames = Object.keys(personaMapRoyal);
 
@@ -17,11 +20,26 @@ function selectRandomPersona(personaList) {
   return personaList[randomIndex];
 }
 
-function testingLog(){
+const categorise = (value) => {
+    for (const [category, items] of Object.entries(classes)){
+        if (items.includes(value)){
+            return category;
+        }
+    }
+    return "unknown";
+}
+
+function main(){
     const randomPersona = selectRandomPersona(personaNames);
     selectedPersona = randomPersona;
+
+    const selectedPersonaValues = personaMapRoyal[selectedPersona];
+    selectedPersonaElems = selectedPersonaValues["elems"];
+
+    selectedElems = selectedPersonaElems.map(categorise);
     console.log(selectedPersona);
-    console.log(selectedPersonaElems);
+    console.log(selectedElems);
+
 }
 
 function compareGuess(){
@@ -38,23 +56,64 @@ function compareGuess(){
         document.body.appendChild(resultElement);
     }
 
-    if (userGuessInput){
+    if (previousGuesses.includes(userGuessInput)){
+        //console.log("Already guessed");
+        return null;
+    }else{
+        if (userGuessInput){
 
-        const userGuessValue = userGuessInput;
-        const correctAnswer = selectedPersona;
-        console.log(userGuessInput);
-        if (userGuessValue == correctAnswer){
+            const userGuessValue = userGuessInput;
+            const correctAnswer = selectedPersona;
+            //console.log(userGuessInput);
+            if (userGuessValue == correctAnswer){
 
-            resultElement.textContent = "Correct!";
-            resultElement.style.color = "green";
+                resultElement.textContent = "Correct!";
+                resultElement.style.color = "green";
 
-        }else{
-            resultElement.textContent = "Wrong!"
-            resultElement.style.color = "red"
+            }else{
+                resultElement.textContent = "Wrong!"
+                resultElement.style.color = "red"
+                compareElems(userGuessValue);
+            }
         }
     }
+
 }
 
+function compareElems(userGuess){
+
+    var guessPersonaValues = personaMapRoyal[userGuess];
+    var guessPersonaElems = guessPersonaValues["elems"];
+    const guessElems = guessPersonaElems.map(categorise);
+
+    console.log(guessElems);
+    let compareMap = [];
+
+    guessElems.forEach((item, i) => {
+        console.log(guessElems[i]);
+            if (guessElems[i] === selectedElems[i]){
+                if (guessElems[i] === "mighty"){
+                    console.log(guessPersonaElems[i]);
+                    console.log(selectedPersonaElems[i]);
+                    if (guessPersonaElems[i] === selectedPersonaElems[i]){
+                        compareMap.push("True")
+                    }else{
+                        compareMap.push("Partial")
+                    }
+                }else{
+                    compareMap.push("True");
+                }
+
+            }else{
+                compareMap.push("False");
+            }
+    });
+    console.log(compareMap);
+    previousGuesses.push(userGuess);
+    console.log(previousGuesses);
+}
+
+//Auto-suggest Persona
 function autoComplete(input){
     if (input == ''){
         return []
@@ -64,7 +123,7 @@ function autoComplete(input){
 
         return term.match(reg);
     });
-    console.log(returnFilter);
+    //console.log(returnFilter);
     return returnFilter;
 }
 
@@ -85,7 +144,7 @@ function showResults(val){
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    testingLog();
+    main();
 
     const form = document.querySelector('form');
     if (form){
