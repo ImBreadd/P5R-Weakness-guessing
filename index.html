@@ -30,9 +30,13 @@
     <form autocomplete = "off">
         <label>
             Guess
-            <input type = "text" id="userGuess" onKeyUp = "showResults(this.value)"/>
+
+
+            <input list ="userGuess" type = "text" id="userGuessSuggest" onKeyUp = "showResults(this.value)"/>
+            <datalist id="userGuess"></datalist>
+
         </label>
-        <div id="suggestion"></div>
+        <button type="submit">Submit</button>
     </form>
 </body>
 </html>
