@@ -107,10 +107,28 @@ function compareElems(userGuess){
             }else{
                 compareMap.push("False");
             }
+        return compareMap;
     });
     console.log(compareMap);
     previousGuesses.push(userGuess);
     console.log(previousGuesses);
+    displayGuess(compareMap);
+}
+
+function displayGuess(compareMap){
+    let resultContainer = document.getElementById('comparisonResults');
+
+    if (!resultContainer){
+        resultContainer = document.createElement('div');
+        resultContainer.id = 'comparisonResults';
+        document.body.appendChild(resultContainer);
+    }
+
+    let resultElement = document.createElement('div');
+    resultElement.classList.add('comparisonResult')
+    let resultText = compareMap.join(" ");
+    resultElement.textContent = `${resultText}`;
+    resultContainer.appendChild(resultElement);
 }
 
 //Auto-suggest Persona
