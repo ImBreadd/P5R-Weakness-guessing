@@ -1,7 +1,7 @@
 
 > [!NOTE] Note
 > Using [PersonaDataRoyal.js](https://github.com/chinhodado/persona5_calculator/blob/master/data/PersonaDataRoyal.js "PersonaDataRoyal.js") from https://github.com/chinhodado/persona5_calculator.
-> 
+> Link to game https://imbreadd.github.io/P5R-Weakness-guessing/
 
 # Review
 
