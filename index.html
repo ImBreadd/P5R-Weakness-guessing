@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="utf-8">
+    <meta class="viewport">
+
     <link rel="stylesheet" href="style.css">
-    <title>PERSONA</title>
+    <title>PERSONA 5</title>
     <script type="text/javascript" src="PersonaDataRoyal.js"></script>
     <script type="text/javascript" src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arsenal:ital,wght@0,400;0,700;1,400;1,700&family=Heebo:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
+<div class="game-window">
     <div class="title-section">
-        <h1 id="game-title">PERSONA</h1>
+        <h1 id="game-title">Velvet Room</h1>
 
     </div>
 
     <form autocomplete = "off">
         <label>
-            Guess
             <input list ="userGuess" type = "text" id="userGuessSuggest" onKeyUp = "showResults(this.value)"/>
             <datalist id="userGuess"></datalist>
 
@@ -24,20 +30,19 @@
     </form>
 
     <div id="personaName"></div>
-    <div class="elements-section">
-    <fieldset id="display-box" class="display-box">
-        <div>Physical</div>
-        <div>Gun</div>
-        <div>Fire</div>
-        <div>Ice</div>
-        <div>Lighting</div>
-        <div>Wind</div>
-        <div>Psychic</div>
-        <div>Nuclear</div>
-        <div>Bless</div>
-        <div>Curse</div>
-    </fieldset>
-    </div>
+    <div id="display-box" class="display-box">
+            <div>Physical</div>
+            <div>Gun</div>
+            <div>Fire</div>
+            <div>Ice</div>
+            <div>Lighting</div>
+            <div>Wind</div>
+            <div>Psychic</div>
+            <div>Nuclear</div>
+            <div>Bless</div>
+            <div>Curse</div>
 
+    </div>
+</div>
 </body>
 </html>
