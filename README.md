@@ -55,5 +55,6 @@ First UI, designed for guessing specifically weaknesses of the given Persona. It
 
 *Currently waiting for a new graphic while working on the functionality*
 
-#### Current state as of 21/12/2024
-![21122024](https://github.com/user-attachments/assets/ab322caa-6830-48e9-ad39-827318ae5add)
+#### Current state as of 10.09.2025
+<img width="1915" height="1023" alt="image" src="https://github.com/user-attachments/assets/98f2dc0d-564e-445a-a81c-b8663639e0f2" />
+
